@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            background-image: url(./Images/10836999.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        h1 {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            font-size: 60px;
+            color: blue;
+            font-style: italic;
+        }
+        section {
+            position: absolute;
+            left: 20px;
+            width: 1024px;
+            height: 576px;
+            margin: auto;
+        }
+        .image {
+            width: 1024px;
+            height: 576px;
+            animation: slide 0.5s linear;
+        }
+        @keyframes slide {
+            0% {
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.20;
+            }
+            40% {
+                opacity: 0.40;
+            }
+            60% {
+                opacity: 0.60;
+            }
+            80% {
+                opacity: 0.80;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        #leftArrow {
+            all: unset;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            padding: 30px;
+            color: #cf0404;
+            font-size: 50px;
+            cursor: pointer;
+        }
+        #rightArrow {
+            all: unset;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            padding: 30px;
+            color: #cf0404;
+            font-size: 50px;
+            cursor: pointer;
+        }
+        #leftArrow:hover, #rightArrow:hover {
+            background: rgba(49, 29, 230, 0.31);
+        }
+    </style>
+</head>
+<body>
+    <h1 id="letter">P<span style="color: red;">h</span>o<span style="color: red;">t</span>o&nbsp;</hv><span style="color: red;">G</span>a<span style="color: red;">ll</span>er<span style="color: red;">y</span></h1>
+    <section>
+        <article id="article-container"></article>
+        <div>
+            <button id="leftArrow" onclick="previousImg()">❮</button>
+            <button id="rightArrow" onclick="nextImg()">❯</button>
+        </div>
+    </section>
+    <script>
+        //const word = document.querySelector('#letter')
+        //word.innerHTML = word.innerHTML.replace('o','<span style="color: red;">o</span>');
+
+        const imgArr=[
+            "Images/Into_the_spiderverse_peter.webp", 
+            "Images/Suit_-_Miles_-_17_-_Into_the_Spider-Verse_Suit_A_-_16-9.webp", 
+            "Images/Suit_-_Peter_-_04_-_Anti-Venom_Suit_-_16-9.webp", 
+            "Images/Suit_-_Peter_-_17_-_Into_the_Spider-Verse_Noir_Suit_-_16-9.webp", 
+            "Images/Suit_-_Peter_-_18_-_Homemade_Suit_-_16-9.webp",
+            "Images/Suit_-_Peter_-_22_-_Webbed_Black_Suit_-_16-9.webp",
+            "Images/Suit_-_Peter_-_23_-_Webbed_Suit_-_16-9.webp",
+            "Images/Suit_-_Peter_-_26_-_Upgraded_Suit_-_16-9.webp",
+            "Images/Suit_-_Peter_-_27_-_Stealth_Suit_-_16-9.webp",
+            "Images/Suit_-_Miles_-_25_-_Across_the_Spider-Verse_Suit_A_-_16-9.webp"
+        ];
+
+        const articleContainer = document.getElementById("article-container");
+        articleContainer.innerHTML = `<img src="${imgArr[0]}" class="image" />`;
+
+        let imgIndex = 0;
+
+        function previousImg() {
+            if (imgIndex > 0 && imgIndex < imgArr.length) {
+                imgIndex--;
+            } else {
+                imgIndex = imgArr.length - 1;
+            }
+            articleContainer.innerHTML = `<img src="${imgArr[imgIndex]}" class="image" />`;
+        }
+
+        function nextImg() {
+            if (imgIndex >= 0 && imgIndex < imgArr.length - 1) {
+                imgIndex++;
+            } else {
+                imgIndex = 0;
+            }
+            articleContainer.innerHTML = `<img src="${imgArr[imgIndex]}" class="image" />`;
+        }
+    </script>
+</body>
+</html>
